@@ -16,13 +16,24 @@ jobs:
     steps:
       - checkout
       # Run your orb's commands to validate them.
-      - tech-talk-orb-odk-demo/greet
+      - tech-talk-orb-odk-demo/add:
+          NumA: 2
+          NumB: 5
 workflows:
   test-deploy:
     jobs:
       # Make sure to include "filters: *filters" in every test job you want to run as part of your deployment.
       - command-tests:
           filters: *filters
+      - tech-talk-orb-odk-demo/calc:
+          func: "ADD"
+          NumA: 2
+          NumB: 5
+          filters: *filters
+          post-steps:
+            - run:
+                name: Should Equal to 7
+                command: grep -xq 7 /tmp/ADD_RESULT.txt
       - orb-tools/pack:
           filters: *filters
       - orb-tools/publish:
@@ -32,6 +43,7 @@ workflows:
           requires:
             - orb-tools/pack
             - command-tests
+            - tech-talk-orb-odk-demo/calc
           context: orb-publishing
           filters:
             branches:
