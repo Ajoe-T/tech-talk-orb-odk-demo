@@ -25,7 +25,7 @@ workflows:
       # Make sure to include "filters: *filters" in every test job you want to run as part of your deployment.
       - command-tests:
           filters: *filters
-      - calculator/calc:
+      - tech-talk-orb-odk-demo/calc:
           func: "ADD"
           NumA: 2
           NumB: 5
@@ -43,7 +43,7 @@ workflows:
           requires:
             - orb-tools/pack
             - command-tests
-            - calculator/calc
+            - tech-talk-orb-odk-demo/calc
           context: orb-publishing
           filters:
             branches:
