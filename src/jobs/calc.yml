@@ -4,7 +4,7 @@ parameters:
   func:
     description: The operation to perform on the given numbers
     type: enum
-    enum: 
+    enum:
       - "ADD"
       - "SUB"
       - "MUL"
@@ -12,13 +12,12 @@ parameters:
   NumA:
     type: integer
     description: "The first number"
-  NumB: 
+  NumB:
     type: integer
     description: "The second number"
 
 docker:
   - image: cimg/base:current
-
 
 steps:
   - checkout
@@ -29,4 +28,3 @@ steps:
         - add:
             NumA: <<parameters.NumA>>
             NumB: <<parameters.NumB>>
-            
