@@ -27,8 +27,8 @@ workflows:
           filters: *filters
       - calculator/calc:
           func: "ADD"
-          numA: 2
-          numB: 5
+          NumA: 2
+          NumB: 5
           filters: *filters
           post-steps:
             - run:

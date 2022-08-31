@@ -9,10 +9,10 @@ parameters:
       - "SUB"
       - "MUL"
       - "DIV"
-  numA:
+  NumA:
     type: integer
     description: "The first number"
-  numB: 
+  NumB: 
     type: integer
     description: "The second number"
 
@@ -27,6 +27,6 @@ steps:
         equals: [ "ADD", <<parameters.func>> ]
       steps:
         - add:
-            numA: <<parameters.numA>>
-            numB: <<parameters.numB>>
+            NumA: <<parameters.NumA>>
+            NumB: <<parameters.NumB>>
             
